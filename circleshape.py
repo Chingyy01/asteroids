@@ -3,7 +3,6 @@ import pygame
 
 class CircleShape(pygame.sprite.Sprite):
     def __init__(self, x, y, radius):
-
         if hasattr(self, "containers"):
             super().__init__(self.containers)
         else:
@@ -16,12 +15,11 @@ class CircleShape(pygame.sprite.Sprite):
     def draw(self, screen):
         pass
 
-    def update(self, clock):
+    def update(self, dt):
         pass
 
-    def collision(self, otherObj):
-        distance = self.position.distance_to(otherObj.position)
-        if distance <= (self.radius + otherObj.radius):
-            return True
-        return False
+    def collision(self, other):
+        return self.position.distance_to(other.position) <= self.radius + other.radius
+    
+     
 
